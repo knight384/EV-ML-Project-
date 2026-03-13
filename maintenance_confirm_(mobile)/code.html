@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Maintenance Mode Confirmation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0ea4a4",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#102222",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .backdrop-blur-md {
+            backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-white overflow-hidden h-screen">
+<!-- Background: Blurred Charger Health Page -->
+<div class="fixed inset-0 z-0 flex flex-col blur-md scale-105 pointer-events-none opacity-50">
+<!-- TopAppBar Component -->
+<div class="flex items-center bg-[#112222] p-4 pb-2 justify-between">
+<div class="text-white flex size-12 shrink-0 items-center">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1">Charger Health</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] items-center justify-center rounded-lg h-12 bg-transparent text-white p-0">
+<span class="material-symbols-outlined">info</span>
+</button>
+</div>
+</div>
+<!-- Dashboard Stats -->
+<div class="flex flex-wrap gap-4 p-4">
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 border border-[#326767]">
+<p class="text-white/70 text-base font-medium">Uptime</p>
+<p class="text-white tracking-light text-2xl font-bold">99.8%</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 border border-[#326767]">
+<p class="text-white/70 text-base font-medium">Energy Delivered</p>
+<p class="text-white tracking-light text-2xl font-bold">1.2 MWh</p>
+</div>
+</div>
+<h2 class="text-white text-[22px] font-bold px-4 pb-3 pt-5">Active Sessions</h2>
+<div class="flex items-center gap-4 bg-[#112222] px-4 min-h-[72px] py-2">
+<div class="text-white flex items-center justify-center rounded-lg bg-[#234848] shrink-0 size-12">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-base font-medium">Tesla Model 3</p>
+<p class="text-[#92c9c9] text-sm">Charging • 45kW</p>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-[#112222] px-4 min-h-[72px] py-2">
+<div class="text-white flex items-center justify-center rounded-lg bg-[#234848] shrink-0 size-12">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-base font-medium">Rivian R1T</p>
+<p class="text-[#92c9c9] text-sm">Charging • 120kW</p>
+</div>
+</div>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+<!-- Modal Container -->
+<div class="w-full max-w-sm bg-[#112222] border border-white/10 rounded-xl shadow-2xl overflow-hidden flex flex-col">
+<!-- Modal Header -->
+<div class="p-5 border-b border-white/10">
+<h3 class="text-xl font-bold text-white">Enable Maintenance Mode?</h3>
+<p class="text-white/60 text-sm mt-1">Status change for Charger ID: #EV-7729</p>
+</div>
+<!-- Warning Box -->
+<div class="mx-5 mt-5 p-4 bg-red-500/10 border border-red-500/20 rounded-lg flex gap-3">
+<div class="text-red-500">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">warning</span>
+</div>
+<div>
+<p class="text-red-400 text-sm font-bold leading-tight">Session Impact Warning</p>
+<p class="text-red-300/80 text-xs mt-1 leading-normal">
+<strong>2 active charging sessions</strong> will be immediately terminated. This action cannot be undone.
+                    </p>
+</div>
+</div>
+<!-- Form Content -->
+<div class="p-5 space-y-4">
+<!-- Dropdown -->
+<div class="flex flex-col gap-1.5">
+<label class="text-white/70 text-xs font-semibold uppercase tracking-wider">Reason for Maintenance</label>
+<div class="relative">
+<select class="w-full h-11 bg-[#1a2e2e] border border-[#326767] rounded-lg px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-primary appearance-none">
+<option value="">Select a reason...</option>
+<option value="hardware">Hardware Repair</option>
+<option value="software">Software Update</option>
+<option value="inspection">Routine Inspection</option>
+<option value="safety">Emergency Safety Issue</option>
+</select>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white/40">
+<span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</div>
+</div>
+</div>
+<!-- Input Field -->
+<div class="flex flex-col gap-1.5">
+<label class="text-white/70 text-xs font-semibold uppercase tracking-wider">Estimated Duration</label>
+<div class="relative">
+<input class="w-full h-11 bg-[#1a2e2e] border border-[#326767] rounded-lg px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-primary" placeholder="e.g., 45" type="text"/>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 text-xs font-medium">
+                            MINUTES
+                        </div>
+</div>
+</div>
+<p class="text-white/40 text-[11px] leading-relaxed italic">
+                    Note: The charger will be flagged as "Unavailable" in all public maps until maintenance mode is manually disabled.
+                </p>
+</div>
+<!-- Action Buttons -->
+<div class="p-5 pt-2 flex flex-col gap-3">
+<button class="w-full h-12 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-xl">build</span>
+                    Enable Maintenance Mode
+                </button>
+<button class="w-full h-12 bg-transparent hover:bg-white/5 text-white/70 font-medium rounded-lg transition-colors">
+                    Cancel
+                </button>
+</div>
+</div>
+</div>
+</body></html>

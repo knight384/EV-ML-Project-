@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Charging Schedules | Optimized EV</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0ea4a4",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#102222",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1a2e2e;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #234848;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #0ea4a4;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 flex-shrink-0 border-r border-primary/10 bg-[#112222] flex flex-col">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">electric_bolt</span>
+</div>
+<div>
+<h1 class="text-white text-base font-bold leading-none">Optimized EV</h1>
+<p class="text-primary text-xs font-medium mt-1">Fleet Management</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-primary/10 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-white bg-primary/20 border-l-4 border-primary rounded-r-lg transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-sm font-medium">Schedules</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-primary/10 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">ev_charger</span>
+<span class="text-sm font-medium">Chargers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-primary/10 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="text-sm font-medium">Vehicles</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-primary/10 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 mt-auto border-t border-primary/10">
+<div class="flex items-center gap-3 p-2 bg-primary/5 rounded-lg">
+<div class="size-8 rounded-full bg-slate-700 overflow-hidden" data-alt="User avatar profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBI1jyMKM1Ku68eO3wLwHtav7udGbbW6J-tT_4in0luacbh8YWcBO1sWDMCTeHrZ9RpAWSNII2EuBzHIO-WJKS2aVMknNJKSU0EeXHMBSPRaNt4Updpp5X2Pi7nrf3q7jn4JNQ1y5OkpGVtGwQSucHcna6kVezoH_ysGzYUDnOpA1nsMY3_85MSIMzlZ3amUE3aYgp69hPUgIS5uc5Be0mTTcbf8mXAuDoAPSaDaOW4fBFtvKbasZm5waQrQeGHG9oPUst9_4Ue4T-l')"></div>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-semibold truncate">Alex Rivera</p>
+<p class="text-[10px] text-primary uppercase font-bold tracking-wider">Manager</p>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-sm">more_vert</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 bg-[#0c1a1a]">
+<!-- Top Bar -->
+<header class="h-16 flex items-center justify-between px-8 border-b border-primary/10 bg-[#112222]">
+<div class="flex items-center gap-6">
+<h2 class="text-lg font-bold">Charging Schedules</h2>
+<div class="h-6 w-px bg-primary/20"></div>
+<div class="flex items-center gap-2 bg-[#234848] rounded-lg px-3 py-1.5 cursor-pointer">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+<span class="text-sm font-medium">Oct 24, 2023</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex p-1 bg-[#234848] rounded-lg">
+<button class="px-3 py-1 text-xs font-bold rounded-md text-slate-400 hover:text-white">1h</button>
+<button class="px-3 py-1 text-xs font-bold rounded-md text-slate-400 hover:text-white">6h</button>
+<button class="px-3 py-1 text-xs font-bold rounded-md bg-primary text-white">12h</button>
+<button class="px-3 py-1 text-xs font-bold rounded-md text-slate-400 hover:text-white">24h</button>
+</div>
+<div class="flex gap-2">
+<button class="p-2 bg-[#234848] rounded-lg text-slate-300 hover:text-white">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="p-2 bg-[#234848] rounded-lg text-slate-300 hover:text-white">
+<span class="material-symbols-outlined text-xl">search</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Gantt Content Area -->
+<div class="flex-1 flex flex-col overflow-hidden">
+<!-- Timeline Header (Sticky) -->
+<div class="flex border-b border-primary/10 bg-[#112222]/80 backdrop-blur-sm">
+<div class="w-48 flex-shrink-0 p-4 border-r border-primary/10 font-bold text-xs uppercase tracking-widest text-primary">
+                    Charger ID
+                </div>
+<div class="flex-1 flex overflow-hidden">
+<div class="flex-1 flex min-w-0">
+<!-- Hour markers -->
+<div class="flex w-full">
+<div class="flex-1 text-center py-4 text-[10px] font-mono border-r border-primary/5 text-slate-500">08:00</div>
+<div class="flex-1 text-center py-4 text-[10px] font-mono border-r border-primary/5 text-slate-500">09:00</div>
+<div class="flex-1 text-center py-4 text-[10px] font-mono border-r border-primary/5 text-slate-500">10:00</div>
+<div class="flex-1 text-center py-4 text-[10px] font-mono border-r border-primary/5 text-slate-500">11:00</div>
+<div class="flex-1 text-center py-4 text-[10px] font-mono border-r border-primary/5 text-primary bg-primary/5 relative">
+                                12:00
+                                <div class="absolute top-full left-1/2 w-px h-[2000px] bg-primary z-20"></div>
+</div>
+<div class="flex-1 text-center py-4 text-[10px] font-mono border-r border-primary/5 text-slate-500">13:00</div>
+<div class="flex-1 text-center py-4 text-[10px] font-mono border-r border-primary/5 text-slate-500">14:00</div>
+<div class="flex-1 text-center py-4 text-[10px] font-mono border-r border-primary/5 text-slate-500">15:00</div>
+<div class="flex-1 text-center py-4 text-[10px] font-mono border-r border-primary/5 text-slate-500">16:00</div>
+<div class="flex-1 text-center py-4 text-[10px] font-mono border-r border-primary/5 text-slate-500">17:00</div>
+<div class="flex-1 text-center py-4 text-[10px] font-mono border-r border-primary/5 text-slate-500">18:00</div>
+<div class="flex-1 text-center py-4 text-[10px] font-mono text-slate-500">19:00</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Scrollable Gantt Body -->
+<div class="flex-1 overflow-y-auto custom-scrollbar relative">
+<!-- Charger Rows -->
+<!-- Charger Row 1 -->
+<div class="flex border-b border-primary/5 hover:bg-white/5 transition-colors group">
+<div class="w-48 flex-shrink-0 p-4 border-r border-primary/10 flex items-center justify-between">
+<span class="text-sm font-semibold">Charger A-01</span>
+<div class="size-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
+</div>
+<div class="flex-1 relative flex items-center h-16">
+<!-- Background Grid -->
+<div class="absolute inset-0 flex">
+<div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5 bg-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1"></div>
+</div>
+<!-- Tasks -->
+<div class="absolute left-[8.33%] w-[16.66%] h-10 rounded-lg bg-slate-500/30 border border-slate-500/50 flex items-center px-3 gap-2 group/tip cursor-help">
+<span class="text-[10px] font-bold text-white/70">EV-402</span>
+<!-- Tooltip -->
+<div class="invisible group-hover/tip:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-slate-800 rounded-xl shadow-2xl border border-primary/30 z-30">
+<p class="text-[10px] font-bold text-primary uppercase">Scheduled Session</p>
+<p class="text-sm font-bold mt-1">EV ID: #402</p>
+<div class="mt-2 space-y-1">
+<div class="flex justify-between text-[10px]">
+<span class="text-slate-400">Power:</span>
+<span class="text-white">22.5 kW</span>
+</div>
+<div class="flex justify-between text-[10px]">
+<span class="text-slate-400">Target SoC:</span>
+<span class="text-white">85%</span>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute left-[41.66%] w-[25%] h-10 rounded-lg bg-primary shadow-[0_4px_12px_rgba(14,164,164,0.3)] flex items-center px-3 gap-2 group/tip cursor-help">
+<span class="material-symbols-outlined text-sm">bolt</span>
+<span class="text-[10px] font-bold">EV-118 (Optimized)</span>
+</div>
+</div>
+</div>
+<!-- Charger Row 2 -->
+<div class="flex border-b border-primary/5 hover:bg-white/5 transition-colors group">
+<div class="w-48 flex-shrink-0 p-4 border-r border-primary/10 flex items-center justify-between">
+<span class="text-sm font-semibold">Charger A-02</span>
+<div class="size-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
+</div>
+<div class="flex-1 relative flex items-center h-16">
+<div class="absolute inset-0 flex">
+<div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5 bg-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1"></div>
+</div>
+<div class="absolute left-[25%] w-[33.33%] h-10 rounded-lg bg-primary/20 border-2 border-primary/50 border-dashed flex items-center px-3 gap-2">
+<span class="text-[10px] font-bold text-primary">EV-305 (Flex Window)</span>
+</div>
+</div>
+</div>
+<!-- Charger Row 3 -->
+<div class="flex border-b border-primary/5 hover:bg-white/5 transition-colors group">
+<div class="w-48 flex-shrink-0 p-4 border-r border-primary/10 flex items-center justify-between">
+<span class="text-sm font-semibold">Charger B-01</span>
+<div class="size-2 rounded-full bg-slate-500"></div>
+</div>
+<div class="flex-1 relative flex items-center h-16">
+<div class="absolute inset-0 flex">
+<div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5 bg-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1"></div>
+</div>
+<div class="absolute left-[0%] w-[16.66%] h-10 rounded-lg bg-slate-500/30 border border-slate-500/50 flex items-center px-3 gap-2">
+<span class="text-[10px] font-bold text-white/70">EV-209</span>
+</div>
+</div>
+</div>
+<!-- Charger Row 4 -->
+<div class="flex border-b border-primary/5 hover:bg-white/5 transition-colors group">
+<div class="w-48 flex-shrink-0 p-4 border-r border-primary/10 flex items-center justify-between">
+<span class="text-sm font-semibold">Charger B-02</span>
+<div class="size-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
+</div>
+<div class="flex-1 relative flex items-center h-16">
+<div class="absolute inset-0 flex">
+<div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5 bg-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1"></div>
+</div>
+<div class="absolute left-[33.33%] w-[41.66%] h-10 rounded-lg bg-primary shadow-[0_4px_12px_rgba(14,164,164,0.3)] flex items-center px-3 gap-2">
+<span class="material-symbols-outlined text-sm">bolt</span>
+<span class="text-[10px] font-bold">EV-501 (Optimized)</span>
+</div>
+</div>
+</div>
+<!-- Charger Row 5 -->
+<div class="flex border-b border-primary/5 hover:bg-white/5 transition-colors group">
+<div class="w-48 flex-shrink-0 p-4 border-r border-primary/10 flex items-center justify-between">
+<span class="text-sm font-semibold">Charger C-01</span>
+<div class="size-2 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.5)]"></div>
+</div>
+<div class="flex-1 relative flex items-center h-16 bg-red-500/5">
+<div class="absolute inset-0 flex">
+<div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5 bg-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1"></div>
+</div>
+<div class="ml-4 flex items-center gap-2 text-red-400">
+<span class="material-symbols-outlined text-sm">warning</span>
+<span class="text-[10px] font-bold uppercase">Maintenance Mode</span>
+</div>
+</div>
+</div>
+<!-- Charger Row 6 -->
+<div class="flex border-b border-primary/5 hover:bg-white/5 transition-colors group">
+<div class="w-48 flex-shrink-0 p-4 border-r border-primary/10 flex items-center justify-between">
+<span class="text-sm font-semibold">Charger C-02</span>
+<div class="size-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
+</div>
+<div class="flex-1 relative flex items-center h-16">
+<div class="absolute inset-0 flex">
+<div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5 bg-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1 border-r border-primary/5"></div><div class="flex-1"></div>
+</div>
+<div class="absolute left-[75%] w-[16.66%] h-10 rounded-lg bg-slate-500/30 border border-slate-500/50 flex items-center px-3 gap-2">
+<span class="text-[10px] font-bold text-white/70">EV-104</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Legend Footer -->
+<footer class="h-14 flex items-center justify-between px-8 border-t border-primary/10 bg-[#112222]">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<div class="size-3 rounded bg-slate-500/50 border border-slate-500"></div>
+<span class="text-[10px] font-bold uppercase text-slate-400">Scheduled</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-3 rounded bg-primary/20 border-2 border-primary border-dashed"></div>
+<span class="text-[10px] font-bold uppercase text-slate-400">Flex (Adjustable)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-3 rounded bg-primary"></div>
+<span class="text-[10px] font-bold uppercase text-slate-400">Optimized</span>
+</div>
+</div>
+<div class="flex items-center gap-4 text-[10px] text-slate-500">
+<div class="flex items-center gap-1">
+<span class="font-bold text-primary">24</span> Active Chargers
+                </div>
+<div class="size-1 rounded-full bg-slate-600"></div>
+<div class="flex items-center gap-1">
+<span class="font-bold text-white">1,240 kWh</span> Total Allocation
+                </div>
+</div>
+</footer>
+</main>
+</body></html>

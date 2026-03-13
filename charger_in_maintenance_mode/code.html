@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Charger Health Detail - Maintenance Mode</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0ea4a4",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#102222",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-white min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#234848] px-10 py-3 bg-background-light dark:bg-background-dark">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined text-3xl">ev_charger</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] font-display">Charger Health</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Chargers</a>
+</div>
+<div class="flex gap-2">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#234848] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#234848] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-[#234848]" data-alt="User profile avatar circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB0PCg-NNTnI3UTvHZ5oARE23RrgEX53meILUBhOyAhFXNUpqFPdrPOgqIorcPpltPfbpqYJrzqQY3HQzbI4lzN19LSLqM8HidtCrFr4RhnTzt109dVPtkmaiWxFdBWL1WD7Dy6r459JVFPWVkAT73OZYgXciQ33qouXcl_BCHuaqxoywMWYGYmGtWFLVJBZzpW7T2EqCfx0UV2wSKYfVGSaiZi6gt9GYUsZv9LP8VXR3KPkIxWkXzLEos0TKB_6UYYNpbkjNlBjMv6");'></div>
+</div>
+</header>
+<div class="flex flex-1">
+<!-- Sidebar -->
+<aside class="w-64 border-r border-[#234848] p-4 hidden lg:flex flex-col gap-4">
+<div class="flex gap-3 items-center mb-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Service technician profile icon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCkMA5lzHgXG6PN5cldqjzZgDyzGUtogQc7-K-tqRg0fTk-z_aDCkPXoxlZP584CCoe2YU0UgARxIx7DPKZgYGIflRxAyw1LwSEbknIT8iRorEUDg0W2p_Y5zBJipCPcy0Ofiug8LW5FezSfkd4zbFAgcb1tJqvd-FkMWN8OUtUrD8I-3OpOSfJU_pUSEH3W-yoqX6k7LHvzt4tr52o9Cvetkj66c-5TkMbU2dn1DQv9dKyUOLB0-IlSusGEXs5C2hoAAErAdTXZBI1");'></div>
+<div class="flex flex-col">
+<h1 class="text-white text-sm font-medium leading-normal">Service Portal</h1>
+<p class="text-[#92c9c9] text-xs font-normal leading-normal">Tech ID: 4421</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#92c9c9] hover:bg-[#234848] transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-sm font-medium">Overview</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-[#234848] text-white" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<p class="text-sm font-medium">Diagnostics</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#92c9c9] hover:bg-[#234848] transition-colors" href="#">
+<span class="material-symbols-outlined">list_alt</span>
+<p class="text-sm font-medium">Logs</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#92c9c9] hover:bg-[#234848] transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+<p class="text-sm font-medium">Service History</p>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 px-8 py-4">
+<a class="text-[#92c9c9] text-sm font-medium leading-normal hover:text-white" href="#">Dashboard</a>
+<span class="text-[#92c9c9] text-sm font-medium">/</span>
+<a class="text-[#92c9c9] text-sm font-medium leading-normal hover:text-white" href="#">Chargers</a>
+<span class="text-[#92c9c9] text-sm font-medium">/</span>
+<span class="text-white text-sm font-medium">Unit A-01</span>
+</div>
+<!-- Maintenance Banner -->
+<div class="px-8 pb-4">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 rounded-xl border border-amber-500/30 bg-amber-500/10 p-5">
+<div class="flex gap-4 items-center">
+<div class="bg-amber-500/20 text-amber-500 p-2 rounded-lg">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-amber-500 text-base font-bold leading-tight">Maintenance Mode Active</p>
+<p class="text-[#92c9c9] text-base font-normal leading-normal">This unit is currently offline for maintenance. Estimated return to service: <span class="text-white font-medium">2:00 PM</span></p>
+</div>
+</div>
+<button class="flex min-w-[160px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-white text-sm font-bold leading-normal transition-all hover:brightness-110 active:scale-95">
+<span class="truncate">Exit Maintenance Mode</span>
+</button>
+</div>
+</div>
+<!-- Header Section -->
+<div class="flex px-8 pb-8 pt-4 @container">
+<div class="flex w-full flex-col gap-4 @[520px]:flex-row @[520px]:justify-between">
+<div class="flex gap-6">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl min-h-32 w-32 border border-[#234848]" data-alt="Charging unit A-01 technical schematic" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBEW6jdDvz1aY3efXxFNN7cTkTDmgYy6A_93OFL9FfgP3a7xhhiwPhJ3iChfiTtg_u-rtRM26z5VKB8qNXj3FIbpKwBdT7OwfyB8KOPwPYhFjsC_Z96GI_EcRMPQ4yaFfuV-ILZz2hAKft2Ar6OlGHjB9dhEqc38wqcIC5r_BGn8Gcva3fwuwtsPzBnOexbnXp2v8U0i7-tRzdHpu4BMjzjfSobyPqrvOTaPx1bi9MHOUP9Vd5HkyRal-wsmCQYXS5e0VoXzzHJoHdw");'></div>
+<div class="flex flex-col justify-center">
+<div class="flex items-center gap-3 mb-1">
+<p class="text-white text-3xl font-bold leading-tight tracking-[-0.015em]">Unit A-01</p>
+<span class="px-3 py-1 bg-amber-500/20 text-amber-500 rounded-full text-xs font-bold border border-amber-500/30 tracking-wider">MAINTENANCE</span>
+</div>
+<p class="text-[#92c9c9] text-base font-normal leading-normal">Firmware: v2.4.1 (Stable)</p>
+<p class="text-[#92c9c9] text-base font-normal leading-normal">Site: Sector 7 Parking Hub</p>
+</div>
+</div>
+<div class="flex items-center">
+<button class="flex min-w-[180px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-[#234848] text-white text-sm font-bold leading-normal tracking-[0.015em] w-full @[480px]:w-auto border border-[#326767] hover:bg-[#2d5c5c] transition-colors">
+<span class="material-symbols-outlined mr-2">play_arrow</span>
+<span class="truncate">Resume Operations</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Diagnostic Controls -->
+<div class="px-8 pb-8">
+<h3 class="text-white text-lg font-bold mb-4">Maintenance Diagnostics</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- In Progress Diagnostic -->
+<div class="bg-[#1a3333] border border-[#234848] p-5 rounded-xl opacity-80">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary/20 text-primary rounded-lg">
+<span class="material-symbols-outlined">memory</span>
+</div>
+<span class="flex items-center gap-1.5 text-xs text-primary font-bold">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+                                        IN PROGRESS
+                                    </span>
+</div>
+<h4 class="text-white font-bold mb-1">Full Circuit Test</h4>
+<p class="text-[#92c9c9] text-sm mb-4">Testing all internal power delivery circuits and relay components.</p>
+<button class="w-full bg-[#234848]/50 text-[#92c9c9] h-10 rounded-lg text-sm font-medium cursor-not-allowed" disabled="">
+                                    System Busy...
+                                </button>
+</div>
+<!-- Available Diagnostic -->
+<div class="bg-[#1a3333] border border-[#234848] p-5 rounded-xl">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary/20 text-primary rounded-lg">
+<span class="material-symbols-outlined">restart_alt</span>
+</div>
+<span class="text-xs text-[#92c9c9] font-bold">READY</span>
+</div>
+<h4 class="text-white font-bold mb-1">Hardware Reset</h4>
+<p class="text-[#92c9c9] text-sm mb-4">Perform a soft reset of the onboard controller and comms module.</p>
+<button class="w-full bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30 h-10 rounded-lg text-sm font-bold transition-all">
+                                    Run Reset
+                                </button>
+</div>
+<!-- Available Diagnostic -->
+<div class="bg-[#1a3333] border border-[#234848] p-5 rounded-xl">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary/20 text-primary rounded-lg">
+<span class="material-symbols-outlined">cyclone</span>
+</div>
+<span class="text-xs text-[#92c9c9] font-bold">READY</span>
+</div>
+<h4 class="text-white font-bold mb-1">Cooling Fan Test</h4>
+<p class="text-[#92c9c9] text-sm mb-4">Verify fan RPM and air flow efficiency for thermal management.</p>
+<button class="w-full bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30 h-10 rounded-lg text-sm font-bold transition-all">
+                                    Run Fan Test
+                                </button>
+</div>
+</div>
+</div>
+<!-- Telemetry & Logs -->
+<div class="px-8 pb-8 flex flex-col xl:flex-row gap-6">
+<!-- Read-only Telemetry -->
+<div class="flex-1 flex flex-col gap-4">
+<h3 class="text-white text-lg font-bold">Live Telemetry</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-[#1a3333] p-4 rounded-xl border border-[#234848]">
+<p class="text-[#92c9c9] text-xs font-medium uppercase mb-1">Internal Temp</p>
+<p class="text-2xl font-bold text-white">42.5°C</p>
+<div class="mt-2 w-full bg-[#234848] h-1.5 rounded-full overflow-hidden">
+<div class="bg-amber-500 h-full w-[65%]"></div>
+</div>
+</div>
+<div class="bg-[#1a3333] p-4 rounded-xl border border-[#234848]">
+<p class="text-[#92c9c9] text-xs font-medium uppercase mb-1">Input Voltage</p>
+<p class="text-2xl font-bold text-white">480.2V</p>
+<div class="mt-2 w-full bg-[#234848] h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[98%]"></div>
+</div>
+</div>
+</div>
+<div class="bg-[#1a3333] p-4 rounded-xl border border-[#234848] flex-1 min-h-[160px]">
+<p class="text-[#92c9c9] text-xs font-medium uppercase mb-4">Maintenance Map View</p>
+<div class="bg-[#112222] w-full h-32 rounded flex items-center justify-center overflow-hidden border border-[#234848]" data-alt="Schematic technical grid background" data-location="Austin, Texas" style="background-image: linear-gradient(rgba(14, 164, 164, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(14, 164, 164, 0.1) 1px, transparent 1px); background-size: 20px 20px;">
+<span class="material-symbols-outlined text-primary text-4xl">location_on</span>
+</div>
+</div>
+</div>
+<!-- Maintenance Logs -->
+<div class="w-full xl:w-96 flex flex-col gap-4">
+<h3 class="text-white text-lg font-bold">Activity Log</h3>
+<div class="bg-[#1a3333] border border-[#234848] rounded-xl overflow-hidden flex flex-col h-full max-h-[400px]">
+<div class="p-4 border-b border-[#234848] bg-[#1a3333]">
+<p class="text-xs font-bold text-[#92c9c9] uppercase">Session: 2023-10-24</p>
+</div>
+<div class="overflow-y-auto p-4 flex flex-col gap-4">
+<div class="flex gap-3">
+<div class="w-1 bg-amber-500 rounded-full"></div>
+<div>
+<p class="text-xs text-[#92c9c9]">12:45 PM</p>
+<p class="text-sm font-medium text-white">Technician entered maintenance mode</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="w-1 bg-[#234848] rounded-full"></div>
+<div>
+<p class="text-xs text-[#92c9c9]">12:47 PM</p>
+<p class="text-sm font-medium text-white">Safety override engaged</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="w-1 bg-primary rounded-full"></div>
+<div>
+<p class="text-xs text-[#92c9c9]">12:55 PM</p>
+<p class="text-sm font-medium text-white">Circuit Test initiated by ID: 4421</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="w-1 bg-[#234848] rounded-full"></div>
+<div>
+<p class="text-xs text-[#92c9c9]">01:02 PM</p>
+<p class="text-sm font-medium text-white">Firmware sync verification started</p>
+</div>
+</div>
+</div>
+<div class="p-4 mt-auto border-t border-[#234848]">
+<button class="w-full text-xs font-bold text-primary text-center uppercase tracking-widest hover:text-white transition-colors">View All History</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+</body></html>

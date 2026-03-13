@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Charger Health - Maintenance Mode</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0ea4a4",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#102222",
+                        "warning": "#f59e0b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .status-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Top Amber Banner -->
+<div class="bg-warning/10 border-b border-warning/30 px-4 py-3 flex items-center justify-between sticky top-0 z-50 backdrop-blur-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-warning text-sm">warning</span>
+<p class="text-warning text-sm font-bold tracking-tight">Maintenance Mode Active</p>
+</div>
+<p class="text-warning text-xs font-medium">Est. Return: 14:30 (45m left)</p>
+</div>
+<!-- Header Navigation -->
+<header class="flex items-center justify-between px-4 py-4 border-b border-primary/10 bg-background-dark">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="text-center">
+<h1 class="text-lg font-bold">Charger CHG-772</h1>
+<p class="text-[10px] text-primary uppercase tracking-widest font-bold">North Parking Area</p>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined">info</span>
+</button>
+</header>
+<main class="flex-1 overflow-y-auto pb-24">
+<!-- Main Status Card -->
+<div class="p-4">
+<div class="bg-white/5 border border-white/10 rounded-xl p-5 shadow-xl">
+<div class="flex justify-between items-start mb-4">
+<div class="w-16 h-16 rounded-lg bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">ev_charger</span>
+</div>
+<div class="bg-warning/20 border border-warning/40 px-3 py-1 rounded-full flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-warning status-pulse"></span>
+<span class="text-warning text-[10px] font-bold uppercase tracking-wider">Maintenance</span>
+</div>
+</div>
+<div class="space-y-1">
+<h2 class="text-xl font-bold">CHG-772-B12</h2>
+<p class="text-sm text-slate-400">Firmware: v2.4.12-rc3</p>
+</div>
+<div class="mt-6 pt-6 border-t border-white/10 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">wifi</span>
+<span class="text-xs font-medium">Connected via 5G</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">sensors</span>
+<span class="text-xs font-medium">Last ping: 2s ago</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Live Telemetry Grid -->
+<div class="px-4 mb-4">
+<h3 class="text-sm font-bold uppercase tracking-widest text-primary mb-3 px-1 flex items-center gap-2">
+                Live Telemetry <span class="w-1.5 h-1.5 bg-primary rounded-full status-pulse"></span>
+</h3>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-white/5 border border-white/10 rounded-lg p-4">
+<p class="text-[10px] font-medium text-slate-400 uppercase">Temperature</p>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="text-2xl font-bold text-primary">42</span>
+<span class="text-xs font-medium text-slate-400">°C</span>
+</div>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-lg p-4">
+<p class="text-[10px] font-medium text-slate-400 uppercase">Voltage</p>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="text-2xl font-bold text-primary">238</span>
+<span class="text-xs font-medium text-slate-400">V</span>
+</div>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-lg p-4">
+<p class="text-[10px] font-medium text-slate-400 uppercase">Amperage</p>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="text-2xl font-bold text-primary">0.0</span>
+<span class="text-xs font-medium text-slate-400">A</span>
+</div>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-lg p-4">
+<p class="text-[10px] font-medium text-slate-400 uppercase">Frequency</p>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="text-2xl font-bold text-primary">60.0</span>
+<span class="text-xs font-medium text-slate-400">Hz</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons (Disabled/Busy) -->
+<div class="px-4 mb-6">
+<h3 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-3 px-1">Control Center</h3>
+<div class="flex flex-col gap-3">
+<button class="w-full bg-slate-800 text-slate-500 border border-slate-700 rounded-lg h-14 flex items-center justify-center gap-3 cursor-not-allowed group relative overflow-hidden" disabled="">
+<span class="material-symbols-outlined">restart_alt</span>
+<span class="font-bold">System Busy...</span>
+</button>
+<button class="w-full bg-slate-800 text-slate-500 border border-slate-700 rounded-lg h-14 flex items-center justify-center gap-3 cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined">system_update</span>
+<span class="font-bold">Firmware Locked</span>
+</button>
+<button class="w-full bg-red-500/10 text-red-500 border border-red-500/30 rounded-lg h-14 flex items-center justify-center gap-3 active:bg-red-500/20 transition-colors">
+<span class="material-symbols-outlined">emergency_home</span>
+<span class="font-bold uppercase tracking-wide">Emergency Stop</span>
+</button>
+</div>
+</div>
+<!-- Activity Log -->
+<div class="px-4 mb-8">
+<div class="flex items-center justify-between mb-3 px-1">
+<h3 class="text-sm font-bold uppercase tracking-widest text-slate-400">Activity Log</h3>
+<button class="text-primary text-xs font-bold">View All</button>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-lg overflow-hidden">
+<div class="p-3 border-b border-white/5 flex gap-3">
+<div class="w-8 h-8 rounded bg-primary/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+</div>
+<div>
+<p class="text-xs font-bold">Maintenance initiated by Admin</p>
+<p class="text-[10px] text-slate-500">Today, 13:45</p>
+</div>
+</div>
+<div class="p-3 border-b border-white/5 flex gap-3">
+<div class="w-8 h-8 rounded bg-primary/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">settings_input_component</span>
+</div>
+<div>
+<p class="text-xs font-bold">Voltage check: 238V (OK)</p>
+<p class="text-[10px] text-slate-500">Today, 13:52</p>
+</div>
+</div>
+<div class="p-3 flex gap-3">
+<div class="w-8 h-8 rounded bg-warning/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-warning text-sm">lock</span>
+</div>
+<div>
+<p class="text-xs font-bold">Control panel locked for safety</p>
+<p class="text-[10px] text-slate-500">Today, 13:55</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-background-dark/95 backdrop-blur-lg border-t border-white/10 px-6 py-3 pb-6 flex items-center justify-between z-50">
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-[10px] font-medium">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">health_and_safety</span>
+<span class="text-[10px] font-bold">Health</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">ev_station</span>
+<span class="text-[10px] font-medium">Chargers</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</nav>
+</body></html>

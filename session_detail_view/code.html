@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Session Detail - Optimized EV Charging</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0ea4a4",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#102222",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-gradient {
+            background: linear-gradient(180deg, rgba(14, 164, 164, 0.2) 0%, rgba(14, 164, 164, 0) 100%);
+        }
+        .teal-glow {
+            box-shadow: 0 0 15px rgba(14, 164, 164, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between border-b border-solid border-primary/20 bg-background-light dark:bg-background-dark px-6 md:px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="text-primary">
+<svg class="size-6" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-tight">Optimized EV Charging</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-center gap-8">
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Dashboard</a>
+<a class="text-white border-b-2 border-primary pb-1 text-sm font-medium" href="#">Sessions</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Chargers</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Analytics</a>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary border border-primary/20">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary border border-primary/20">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/30" data-alt="User avatar of Alex Rivera" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAy5m69fZDD4DIPB8zxoeIJiURedvZ8xQ7a4w6RP2Q_en9_ZaQbM4kytYMTSbiTMePsQjl806Vyr44H1R3ImnuiPrH1ZNkXyUB0MD-fCX3I0Xgkxrm3AmnYdbN1kl4DZSMGFHjaBhWW8RggXwzWQ3GCXlQN80Dvi6p1j9KdG-mWGh0h4FfHGj9uvmbClQLhaSArdBkrNT9qWGob2FN9TYi5FurIdtVUIdF22FdILEvrnA8EeV9vIbBcTakTOzsraEwH82VVCpM2SK_u");'></div>
+</div>
+</header>
+<main class="flex-1 px-4 md:px-10 lg:px-40 py-8">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 mb-6">
+<a class="text-primary/70 hover:text-primary text-sm font-medium transition-colors" href="#">Sessions</a>
+<span class="material-symbols-outlined text-slate-500 text-sm">chevron_right</span>
+<span class="text-white text-sm font-semibold">Session #EV-9821</span>
+</nav>
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+<div class="space-y-2">
+<div class="flex items-center gap-3">
+<h1 class="text-white text-4xl font-black tracking-tight">Session #EV-9821</h1>
+<span class="px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider border border-primary/30 flex items-center gap-1">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+                                In Progress
+                            </span>
+</div>
+<p class="text-slate-400 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">ev_station</span>
+                            Charger: Level 2 - Unit 4
+                        </p>
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="flex items-center justify-center gap-2 px-4 py-2 bg-primary text-white rounded-lg font-bold text-sm hover:brightness-110 transition-all teal-glow">
+<span class="material-symbols-outlined text-sm">bolt</span>
+                            Re-optimize
+                        </button>
+<button class="flex items-center justify-center gap-2 px-4 py-2 bg-red-500/10 text-red-500 border border-red-500/20 rounded-lg font-bold text-sm hover:bg-red-500 hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">stop_circle</span>
+                            Stop Session
+                        </button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Main Content Area -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Stats Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-primary/5 border border-primary/10 rounded-xl p-5 hover:border-primary/30 transition-colors group">
+<p class="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-2 group-hover:text-primary transition-colors">Start Time</p>
+<p class="text-white text-2xl font-bold">14:20 PM</p>
+<p class="text-slate-500 text-xs mt-1">Today</p>
+</div>
+<div class="bg-primary/5 border border-primary/10 rounded-xl p-5 hover:border-primary/30 transition-colors group">
+<p class="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-2 group-hover:text-primary transition-colors">Estimated End</p>
+<p class="text-white text-2xl font-bold">16:45 PM</p>
+<p class="text-primary text-xs font-medium mt-1">~ 2h 25m total</p>
+</div>
+<div class="bg-primary/5 border border-primary/10 rounded-xl p-5 hover:border-primary/30 transition-colors group">
+<p class="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-2 group-hover:text-primary transition-colors">Energy Delivered</p>
+<p class="text-white text-2xl font-bold">34.2 kWh</p>
+<div class="flex items-center gap-1 text-emerald-500 text-xs font-medium mt-1">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                                    +12.4%
+                                </div>
+</div>
+<div class="bg-primary/5 border border-primary/10 rounded-xl p-5 hover:border-primary/30 transition-colors group">
+<p class="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-2 group-hover:text-primary transition-colors">Current Power</p>
+<p class="text-primary text-2xl font-black">7.4 kW</p>
+<p class="text-slate-500 text-xs mt-1">Stable</p>
+</div>
+</div>
+<!-- Main Telemetry Chart -->
+<div class="bg-primary/5 border border-primary/10 rounded-xl p-6 relative overflow-hidden">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-white font-bold text-lg">Power Delivery (kW) vs Time</h3>
+<p class="text-slate-400 text-sm">Real-time telemetry stream from Level 2 - Unit 4</p>
+</div>
+<div class="flex gap-2">
+<span class="flex items-center gap-1 text-[11px] font-bold text-slate-400 bg-background-dark px-2 py-1 rounded border border-primary/10">LIVE DATA</span>
+</div>
+</div>
+<div class="h-[300px] w-full relative">
+<!-- Chart SVG Simulation -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 800 200">
+<defs>
+<lineargradient id="areaGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#0ea4a4" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#0ea4a4" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0 160 C 50 150, 100 80, 150 90 S 250 140, 300 120 S 400 40, 450 60 S 550 110, 600 90 S 700 30, 800 50 V 200 H 0 Z" fill="url(#areaGradient)"></path>
+<path d="M0 160 C 50 150, 100 80, 150 90 S 250 140, 300 120 S 400 40, 450 60 S 550 110, 600 90 S 700 30, 800 50" fill="none" stroke="#0ea4a4" stroke-linecap="round" stroke-width="3"></path>
+<!-- Current point marker -->
+<circle class="animate-pulse" cx="800" cy="50" fill="#0ea4a4" r="5"></circle>
+</svg>
+<!-- X-Axis Labels -->
+<div class="flex justify-between mt-4 border-t border-primary/10 pt-4">
+<span class="text-[10px] font-bold text-slate-500">14:20</span>
+<span class="text-[10px] font-bold text-slate-500">14:40</span>
+<span class="text-[10px] font-bold text-slate-500">15:00</span>
+<span class="text-[10px] font-bold text-slate-500">15:20</span>
+<span class="text-[10px] font-bold text-slate-500">15:40</span>
+<span class="text-[10px] font-bold text-slate-500">16:00</span>
+<span class="text-[10px] font-bold text-slate-500">16:20</span>
+</div>
+</div>
+</div>
+<!-- Secondary Actions -->
+<div class="flex justify-end pt-2">
+<button class="flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm font-medium">
+<span class="material-symbols-outlined text-sm">download</span>
+                                Download Detailed Session Logs (.csv)
+                            </button>
+</div>
+</div>
+<!-- Sidebar Panels -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Vehicle Card -->
+<div class="bg-primary/5 border border-primary/10 rounded-xl p-6">
+<h4 class="text-white font-bold text-sm mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">directions_car</span>
+                                Vehicle Information
+                            </h4>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-16 h-16 bg-background-dark rounded-lg flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-3xl text-primary">electric_car</span>
+</div>
+<div>
+<p class="text-white font-bold">Tesla Model 3</p>
+<p class="text-slate-500 text-sm">Gray Metallic • 2023</p>
+</div>
+</div>
+<div class="space-y-4">
+<div>
+<div class="flex items-center justify-between text-xs font-bold mb-2">
+<span class="text-slate-400">Current SOC</span>
+<span class="text-primary">68%</span>
+</div>
+<div class="w-full bg-background-dark h-2 rounded-full overflow-hidden border border-primary/10">
+<div class="bg-primary h-full rounded-full" style="width: 68%;"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-2">
+<div class="bg-background-dark/50 p-3 rounded-lg border border-primary/5">
+<p class="text-[10px] uppercase font-bold text-slate-500 mb-1">Target</p>
+<p class="text-sm font-bold text-white">90%</p>
+</div>
+<div class="bg-background-dark/50 p-3 rounded-lg border border-primary/5">
+<p class="text-[10px] uppercase font-bold text-slate-500 mb-1">Health</p>
+<p class="text-sm font-bold text-emerald-500">98%</p>
+</div>
+</div>
+</div>
+</div>
+<!-- User Card -->
+<div class="bg-primary/5 border border-primary/10 rounded-xl p-6">
+<h4 class="text-white font-bold text-sm mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">person</span>
+                                Driver Details
+                            </h4>
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-full border-2 border-primary/20 p-0.5">
+<div class="w-full h-full rounded-full bg-cover bg-center" data-alt="Profile photo of Alex Rivera" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAXZiTEdsvD1hRHj9r_4MDg0s-i-6UVid-VRKKFw4b3WG-SD6UAWmG05HyTIQIds7cN3sWsI4PoUC5QLtgauDkcN56a-Nr6Wd4S00rsgHjB46LDpagVKIA_6I3WK5tTLiMIwAuSCmc1OgexSw0UZ3AGhD82VE2eYI9NGTMqUqfaUWDkvIDFLjJvN86SUpC8MDkZ4-5oSG2A7fSAu4P95Ms0n0fLYE2UPG2ZAaxeeX5at8e2fL4FCBcKGgloPgyUPhkEMOjkyHt8jZls");'></div>
+</div>
+<div>
+<p class="text-white font-bold">Alex Rivera</p>
+<span class="text-[10px] font-black bg-primary/20 text-primary px-2 py-0.5 rounded uppercase">Pro Plan</span>
+</div>
+</div>
+</div>
+<!-- Billing Card -->
+<div class="bg-primary/5 border border-primary/10 rounded-xl p-6">
+<h4 class="text-white font-bold text-sm mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">payments</span>
+                                Billing Status
+                            </h4>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-slate-400 text-sm">Estimated Cost</span>
+<span class="text-white font-bold text-xl">$12.45</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-slate-400 text-sm">Payment Method</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-lg">credit_card</span>
+<span class="text-white text-sm font-medium">VISA •••• 4242</span>
+</div>
+</div>
+<div class="pt-4 border-t border-primary/10">
+<div class="flex items-center gap-2 px-3 py-2 bg-background-dark/50 rounded-lg border border-primary/5">
+<span class="material-symbols-outlined text-amber-500 text-sm">info</span>
+<span class="text-[11px] text-slate-400">Final bill calculated upon disconnect</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-auto border-t border-primary/10 py-6 px-10 text-center">
+<p class="text-slate-500 text-xs">© 2024 Optimized EV Systems. All rights reserved. System Status: <span class="text-emerald-500 font-bold">Optimal</span></p>
+</footer>
+</div>
+</div>
+</body></html>

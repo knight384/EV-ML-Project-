@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EV Grid Admin - Optimized Charging</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0ea4a4",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#102222",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .custom-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #0ea4a4;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+        .custom-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #0ea4a4;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex font-display">
+<!-- Sidebar Navigation -->
+<aside class="w-72 bg-[#112222] border-r border-primary/20 flex flex-col h-screen sticky top-0">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">bolt</span>
+</div>
+<div>
+<h1 class="text-white text-lg font-bold leading-none">EV Grid Admin</h1>
+<p class="text-primary text-xs font-medium uppercase tracking-wider mt-1">Optimized v2.4</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary text-white shadow-lg shadow-primary/20" href="#">
+<span class="material-symbols-outlined">settings_input_component</span>
+<span class="text-sm font-medium">Site Capacity</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined">energy_savings_leaf</span>
+<span class="text-sm font-medium">Demand Response</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-sm font-medium">Utility Rates</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined">health_and_safety</span>
+<span class="text-sm font-medium">System Health</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-white/5">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 bg-[#0a1414]">
+<!-- Top Bar -->
+<header class="h-16 border-b border-primary/10 flex items-center justify-between px-8 bg-[#112222]">
+<div class="flex items-center gap-4">
+<nav class="flex text-sm text-slate-400 items-center gap-2">
+<span>Home</span>
+<span class="material-symbols-outlined text-xs leading-none">chevron_right</span>
+<span class="text-white font-medium">Site Capacity Management</span>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-white transition-colors">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border-2 border-[#112222]"></span>
+</div>
+<div class="flex items-center gap-3 pl-6 border-l border-white/10 cursor-pointer">
+<div class="text-right">
+<p class="text-white text-sm font-semibold leading-none">Marcus Gridman</p>
+<p class="text-slate-400 text-xs mt-1">Site Supervisor</p>
+</div>
+<img alt="User Profile Avatar" class="w-10 h-10 rounded-full border border-primary/40 bg-primary/10" data-alt="Close up portrait of a professional male operations supervisor avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOHFm-eVhPrGUUTgsjYx3Xw-USmN-MsCIQ0i5VA-C_UXYvTDMdOeM3GFaaZaMDi1TOdsK8BXXKAoeC0dEj56gP0l5fFJKVDjFmB0oqIT4PdO_IlvT6C9ZHxVR1FXqQKgLE92h084jtq9gkV-or3H06KDmvjYp3aOCMzvzlpEOWHfrj4idRU7H1gXXu57OKKqYtD1voSWA3xwFf8HEUKrhnNDCsMIHkYXMACKkj47R6PlryYnqB8tV6q6V-zjchQsVuez7l5_KGlHky"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-8 max-w-7xl mx-auto w-full space-y-8">
+<!-- Header Section -->
+<div class="flex flex-col gap-2">
+<h2 class="text-3xl font-extrabold text-white tracking-tight">Site Capacity &amp; Grid Optimization</h2>
+<p class="text-slate-400 text-lg">Configure real-time load balancing and automated demand response protocols for Site A-12.</p>
+</div>
+<!-- Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- 1. Site Capacity Management -->
+<section class="lg:col-span-8 bg-[#112222] rounded-xl border border-primary/10 p-6 flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">speed</span>
+<h3 class="text-xl font-bold text-white">Capacity Control</h3>
+</div>
+<span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-bold uppercase tracking-widest">Active</span>
+</div>
+<div class="space-y-8 py-4">
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<label class="text-slate-300 font-medium">Max Grid Load (kW)</label>
+<span class="text-4xl font-black text-primary">425 <small class="text-sm font-normal text-slate-500">kW</small></span>
+</div>
+<input class="w-full h-3 bg-background-dark rounded-lg appearance-none cursor-pointer custom-slider border border-white/5" max="500" min="0" type="range" value="425"/>
+<div class="flex justify-between text-xs text-slate-500 font-medium px-1">
+<span>0 kW</span>
+<span>125 kW</span>
+<span>250 kW</span>
+<span>375 kW</span>
+<span>500 kW</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-slate-300 text-sm font-medium">Safety Buffer (%)</label>
+<div class="relative">
+<input class="w-full bg-background-dark border-primary/20 rounded-lg text-white px-4 py-3 focus:ring-primary focus:border-primary" type="number" value="15"/>
+<span class="absolute right-4 top-3.5 text-slate-500">%</span>
+</div>
+<p class="text-slate-500 text-xs">Recommended: 10-20% for peak protection.</p>
+</div>
+<div class="bg-primary/5 rounded-lg border border-primary/20 p-4 flex items-center gap-4">
+<div class="bg-primary/20 p-3 rounded-full">
+<span class="material-symbols-outlined text-primary">info</span>
+</div>
+<div class="text-sm">
+<p class="text-white font-semibold">Available Capacity</p>
+<p class="text-slate-400">Current headroom: <span class="text-primary font-bold">64.5 kW</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. System Health -->
+<section class="lg:col-span-4 flex flex-col gap-6">
+<div class="bg-[#112222] rounded-xl border border-primary/10 p-6 flex-1">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">monitoring</span>
+<h3 class="text-xl font-bold text-white">System Health</h3>
+</div>
+<div class="space-y-6">
+<div class="flex items-center justify-between p-3 rounded-lg bg-background-dark/50 border border-white/5">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
+<span class="text-slate-300 font-medium">Grid Connection</span>
+</div>
+<span class="text-xs font-bold text-emerald-500 uppercase">Optimal</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-background-dark/50 border border-white/5">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
+<span class="text-slate-300 font-medium">Local Transformer</span>
+</div>
+<span class="text-xs font-bold text-emerald-500 uppercase">42°C (Normal)</span>
+</div>
+<div class="space-y-2 pt-2">
+<div class="flex justify-between text-xs mb-1">
+<span class="text-slate-400">Real-time Utilization</span>
+<span class="text-white font-bold">78%</span>
+</div>
+<div class="w-full bg-background-dark h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 78%"></div>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">save</span>
+                        Apply Grid Changes
+                    </button>
+</section>
+<!-- 3. Demand Response (DR) -->
+<section class="lg:col-span-6 bg-[#112222] rounded-xl border border-primary/10 p-6 space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">offline_bolt</span>
+<h3 class="text-xl font-bold text-white">Demand Response</h3>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<p class="text-slate-400 text-sm">Automated throttling triggers when grid load exceeds safety limits or utility DR signals are received.</p>
+<div class="space-y-4">
+<label class="text-slate-300 text-sm font-medium">Throttling Priority Order</label>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-3 bg-background-dark rounded-lg border border-white/5 cursor-move">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-600 text-sm">drag_indicator</span>
+<span class="text-white font-medium">1. Guest Parking Zone (A-D)</span>
+</div>
+<span class="text-[10px] bg-amber-500/20 text-amber-500 px-2 py-1 rounded font-bold uppercase tracking-tighter">Throttle First</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-background-dark rounded-lg border border-white/5 cursor-move">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-600 text-sm">drag_indicator</span>
+<span class="text-white font-medium">2. Employee Level 2 Chargers</span>
+</div>
+<span class="text-[10px] bg-slate-500/20 text-slate-500 px-2 py-1 rounded font-bold uppercase tracking-tighter">Standard</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-background-dark rounded-lg border border-white/5 cursor-move opacity-60">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-600 text-sm">drag_indicator</span>
+<span class="text-white font-medium">3. Executive Fleet (DC Fast)</span>
+</div>
+<span class="text-[10px] bg-primary/20 text-primary px-2 py-1 rounded font-bold uppercase tracking-tighter">High Priority</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Utility Rates -->
+<section class="lg:col-span-6 bg-[#112222] rounded-xl border border-primary/10 p-6 space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<h3 class="text-xl font-bold text-white">Utility Rates</h3>
+</div>
+<button class="text-primary text-sm font-bold flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm">add</span> Add Window
+                        </button>
+</div>
+<div class="overflow-hidden rounded-lg border border-white/5">
+<table class="w-full text-left text-sm">
+<thead class="bg-background-dark text-slate-400 font-medium">
+<tr>
+<th class="px-4 py-3">Window Type</th>
+<th class="px-4 py-3">Time Range</th>
+<th class="px-4 py-3">Cost ($/kWh)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5 text-slate-300">
+<tr>
+<td class="px-4 py-4 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-red-500"></span> Peak
+                                    </td>
+<td class="px-4 py-4">16:00 - 20:00</td>
+<td class="px-4 py-4 font-bold text-white">$0.42</td>
+</tr>
+<tr>
+<td class="px-4 py-4 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span> Mid-Peak
+                                    </td>
+<td class="px-4 py-4">08:00 - 16:00</td>
+<td class="px-4 py-4 font-bold text-white">$0.28</td>
+</tr>
+<tr>
+<td class="px-4 py-4 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span> Off-Peak
+                                    </td>
+<td class="px-4 py-4">20:00 - 08:00</td>
+<td class="px-4 py-4 font-bold text-white">$0.12</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="bg-background-dark/50 p-4 rounded-lg flex items-start gap-3">
+<span class="material-symbols-outlined text-amber-500 text-sm mt-0.5">warning</span>
+<p class="text-xs text-slate-500">Utility Provider (GridCo) has signaled a "High Load Event" today between 17:00 and 19:00. Dynamic pricing will be in effect.</p>
+</div>
+</section>
+</div>
+</div>
+</main>
+</body></html>
